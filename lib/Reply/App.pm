@@ -126,7 +126,7 @@ printed to C<STDOUT>, otherwise it will be printed to C<STDERR>.
 
 sub usage {
     my $fh = $_[0] ? *STDERR : *STDOUT;
-    print $fh "    reply [-lb] [-I dir] [-M mod] [--version] [--help] [--cfg file]\n";
+    print $fh "    reply [-lb] [-I dir] [-M mod] [--cfg file] [-e code] [script.pl]\n";
 }
 
 =method version($exitcode)
