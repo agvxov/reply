@@ -9,6 +9,8 @@ use Reply::App;
 =head1 SYNOPSIS
 
   reply [-lb] [-I dir] [-M mod] [--cfg file] [-e code] [script.pl]
+  reply --version
+  reply --help
 
 =head1 DESCRIPTION
 
