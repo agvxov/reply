@@ -9,6 +9,8 @@
 NOTE: This is an early release, and implementation details of this module are
 still very much in flux. Feedback is welcome!
 
+Reply - Read, Eval, Print, Loop, Yay!
+
 Reply is a lightweight, extensible REPL for Perl. It is plugin-based (see
 [Reply::Plugin](https://metacpan.org/pod/Reply%3A%3APlugin)), and through plugins supports many advanced features such as
 coloring and pretty printing, readline support, and pluggable commands.
