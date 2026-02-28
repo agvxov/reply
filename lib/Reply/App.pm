@@ -151,6 +151,7 @@ script_line3 = use 5.XXX
 [Interrupt]
 [FancyPrompt]
 [DataDumper]
+[Editor]
 [Colors]
 [ReadLine]
 [Hints]
