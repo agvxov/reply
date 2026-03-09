@@ -9,8 +9,6 @@ use Scalar::Util 'blessed';
 
 use Reply::Util qw($ident_rx $fq_ident_rx $fq_varname_rx methods);
 
-use Data::Dumper;
-
 =head1 SYNOPSIS
 
   ; .replyrc
@@ -37,8 +35,8 @@ sub tab_handler {
 
     my $class;
     if ($invocant =~ /^\$/) {
-        # XXX should support globals here
         my $env = {
+            global_environment($invocant),
             map { %$_ } $self->publish('lexical_environment'),
         };
 
@@ -67,4 +65,21 @@ sub tab_handler {
     return sort @results;
 }
 
+sub global_environment {
+    my ($fq_symbol) = @_;
+
+    my ($sigil, $fq_name) = $fq_symbol =~ /^(.)(.*)/;
+    return unless defined $sigil;
+
+    my @parts = split /::/, $fq_name;
+    return if grep /:/, @parts;
+    my $varname    = pop @parts;
+    my $symbol     = $sigil . $varname;
+    my $stash_name = @parts ? join '::', @parts : 'main';
+
+    my $stash = Package::Stash->new($stash_name);
+    return unless $stash->has_symbol($symbol);
+    my $value = $stash->get_symbol($symbol);
+    return $fq_symbol => $value;
+}
 1;
