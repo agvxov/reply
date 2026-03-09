@@ -9,6 +9,8 @@ use Scalar::Util 'blessed';
 
 use Reply::Util qw($ident_rx $fq_ident_rx $fq_varname_rx methods);
 
+use Data::Dumper;
+
 =head1 SYNOPSIS
 
   ; .replyrc
@@ -39,9 +41,19 @@ sub tab_handler {
         my $env = {
             map { %$_ } $self->publish('lexical_environment'),
         };
+
         my $var = $env->{$invocant};
-        return unless $var && ref($var) eq 'REF' && blessed($$var);
-        $class = blessed($$var);
+        return unless $var;
+
+        if (ref($var) eq 'REF' && blessed($$var)) {
+            $class = blessed($$var);
+        }
+        elsif (ref($var) eq 'SCALAR') {
+            $class = $$var;
+        }
+        else {
+            return;
+        }
     }
     else {
         $class = $invocant;
