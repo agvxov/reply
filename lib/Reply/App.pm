@@ -144,6 +144,8 @@ sub version {
 1;
 
 __DATA__
+; Reply (Read Evaluate Print Loop Yay!)
+; has auto-created this configuration file.
 script_line1 = use strict
 script_line2 = use warnings
 script_line3 = use 5.XXX
