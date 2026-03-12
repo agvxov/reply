@@ -1,0 +1,14 @@
+* change location of default configuration file;
+   Reply already uses File-HomeDir which respects XDG,
+   however we are currently waiting on a ticket regarding my_config
+
+Original:
+* output should go through a single codepath -
+   We should provide print_result and print_error to plugins,
+   and they should use that rather than just calling print themselves.
+* catching warnings should be a core reply feature -
+   This should include having a print_warnings method, once ^^^ is in place.
+* plugin bundle support
+* test suite! - Really should have one of these...
+* https://github.com/doy/reply/issues/38; add POSIX SIGINT handler
+* XXX comments
